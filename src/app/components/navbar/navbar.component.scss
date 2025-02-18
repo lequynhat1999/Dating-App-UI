@@ -1,0 +1,39 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.sidenav-container {
+  .mat-sidenav {
+    background-color: #616466;
+    width: fit-content;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+  }
+  .side-nav-items {
+    display: flexbox;
+    flex-direction: column;
+    .item-route {
+      padding: 18px 24px;
+    }
+    .item-route:hover {
+      background-color: #494d50;
+      cursor: pointer;
+    }
+  }
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .menu-icon {
+    display: none; // screen > 900px hide menu-icon
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .link {
+    display: none; // screen < 900px hide link
+  }
+}

@@ -1,0 +1,29 @@
+<mat-toolbar>
+  <button mat-icon-button class="menu-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
+    <mat-icon style="color: white;">menu</mat-icon>
+  </button>
+  <span>{{ title }}</span>
+  <span class="example-spacer"></span>
+  
+  <button mat-button routerLink="/component" class="link">Component</button>
+  <button mat-button routerLink="/directive" class="link">Directive</button>
+  <button mat-button routerLink="/service" class="link">Service</button>
+  <button mat-button routerLink="/pipe" class="link">Pipe</button>
+  <button mat-button routerLink="/rxjs" class="link">RxJS</button>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav [mode]="'side'" [fixedInViewport]="true" [fixedTopGap]="56">
+    <div class="side-nav-items">
+      <div class="item-route"><a routerLink="/component">Component</a></div>
+      <div class="item-route"><a routerLink="/directive">Directive</a></div>
+      <div class="item-route"><a routerLink="/service">Service</a></div>
+      <div class="item-route"><a routerLink="/pipe">Pipe</a></div>
+      <div class="item-route"><a routerLink="/rxjs">RxJS</a></div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <ng-content></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
