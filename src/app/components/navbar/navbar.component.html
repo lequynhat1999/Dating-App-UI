@@ -1,19 +1,42 @@
 <mat-toolbar>
-  <button mat-icon-button class="menu-icon" aria-label="Example icon-button with menu icon" (click)="sidenav.toggle()">
-    <mat-icon style="color: white;">menu</mat-icon>
+  <button
+    mat-icon-button
+    class="menu-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="sidenav.toggle()"
+  >
+    <mat-icon style="color: white">menu</mat-icon>
   </button>
   <span>{{ title }}</span>
   <span class="example-spacer"></span>
-  
+
   <button mat-button routerLink="/component" class="link">Component</button>
   <button mat-button routerLink="/directive" class="link">Directive</button>
   <button mat-button routerLink="/service" class="link">Service</button>
   <button mat-button routerLink="/pipe" class="link">Pipe</button>
   <button mat-button routerLink="/rxjs" class="link">RxJS</button>
+  <div class="d-flex align-items-center ml-24">
+    <ng-container *ngIf="currentUser$ | async as user">
+      <div class="text-welcome">Welcome, <strong>{{ user?.UserName }}</strong></div>
+    </ng-container>
+    <mat-card-header [matMenuTriggerFor]="menu" #menuTrigger>
+      <div mat-card-avatar class="avatar cursor-pointer">
+      </div>
+    </mat-card-header>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Edit Profile</button>
+      <button mat-menu-item (click)="logout()">Logout</button>
+    </mat-menu>
+  </div>
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav [mode]="'side'" [fixedInViewport]="true" [fixedTopGap]="56">
+  <mat-sidenav
+    #sidenav
+    [mode]="'side'"
+    [fixedInViewport]="true"
+    [fixedTopGap]="56"
+  >
     <div class="side-nav-items">
       <div class="item-route"><a routerLink="/component">Component</a></div>
       <div class="item-route"><a routerLink="/directive">Directive</a></div>

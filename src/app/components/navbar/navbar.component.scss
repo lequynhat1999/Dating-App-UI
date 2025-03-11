@@ -26,6 +26,19 @@
   }
 }
 
+.avatar {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-left: 12px;
+}
+
+.text-welcome{
+  font-size: 13px;
+}
+
 @media screen and (min-width: 900px) {
   .menu-icon {
     display: none; // screen > 900px hide menu-icon

@@ -1,31 +1,63 @@
 <div class="form">
-  <div *ngIf="formMode == formModeEnum.Login" class="form-container login">
+  @if (formMode == formModeEnum.Login) {
+  <div class="form-container login" (keydown)="onKeyDown($event)">
     <div class="login-wrapper">
       <div class="login-content">
         <h1 style="margin-bottom: 16px; font-weight: 700">Log in</h1>
-        <div>
+        <div [className]="username.invalid ? 'mb-3' : ''">
           <mat-form-field class="input-login" appearance="outline">
             <mat-label>Username</mat-label>
-            <input matInput placeholder="Placeholder" />
+            <input
+              matInput
+              [formControl]="username"
+              placeholder="Enter your username"
+              required
+              [(ngModel)]="objectLogin.username"
+              (blur)="updateErrorMessageUserName()"
+            />
             <mat-icon matSuffix>person</mat-icon>
+            @if (username.invalid) {
+            <mat-error>{{ errorMessageUsername() }}</mat-error>
+            }
           </mat-form-field>
         </div>
-        <div>
+        <div [className]="password.invalid ? 'mb-3' : ''">
           <mat-form-field class="input-login" appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="Placeholder" />
-            <mat-icon matSuffix>visibility_off</mat-icon>
+            <input
+              matInput
+              [type]="hide() ? 'password' : 'text'"
+              [formControl]="password"
+              placeholder="Enter your password"
+              required
+              (blur)="updateErrorMessagePassword()"
+              [(ngModel)]="objectLogin.password"
+            />
+            @if (username.invalid) {
+            <mat-error>{{ errorMessagePassword() }}</mat-error>
+            }
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="clickEvent($event)"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide()"
+            >
+              <mat-icon>{{
+                hide() ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </button>
           </mat-form-field>
         </div>
         <div class="remember-checkbox">
           <mat-checkbox>Remember me</mat-checkbox>
         </div>
-        <div class="fs-6">Forgot Password?</div>
         <div class="mt-3 mb-3">
-          <button class="button-login" mat-flat-button>Login</button>
+          <button class="button-login" mat-flat-button (click)="login()">
+            Login
+          </button>
         </div>
-        <!-- line -->
-        <div class="divider">OR</div>
+        <div class="mt-3 fs-6 link-button">Forgot Password?</div>
         <!-- register -->
         <div class="mt-2 mb-2">
           <span
@@ -35,6 +67,9 @@
             ></span
           >
         </div>
+        <!-- line -->
+        <div class="divider"><span class="divider-text">OR</span></div>
+
         <!-- other login -->
         <div class="social-icon mt-4">
           <i class="fab fa-google item"></i>
@@ -51,11 +86,8 @@
       </div>
     </div>
   </div>
-
-  <div
-    *ngIf="formMode == formModeEnum.Register"
-    class="form-container register"
-  >
+  } @else {
+  <div class="form-container register">
     <div class="login-wrapper">
       <div class="login-content">
         <h1 style="margin-bottom: 16px; font-weight: 700">Register</h1>
@@ -91,7 +123,8 @@
           <button class="button-login" mat-flat-button>Register</button>
         </div>
         <div>
-          Already have an account ? <span class="link-button" (click)="handleOpenFormLogin()">Login</span>
+          Already have an account ?
+          <span class="link-button" (click)="handleOpenFormLogin()">Login</span>
         </div>
       </div>
     </div>
@@ -99,8 +132,9 @@
     <div class="toggle-box">
       <div class="toggle-panel toggle-left">
         <h1>Hello, Welcome!</h1>
-        <h3>Have a nice day.</h3>
+        <h6>Have a nice day.</h6>
       </div>
     </div>
   </div>
+  }
 </div>
