@@ -27,6 +27,10 @@ export class AccountService extends BaseService {
     }));
   }
 
+  register(data: any){
+    return this.http.post(`${this.generateURL()}/register`, data);
+  }
+
   setCurrentUser(user: User){
     this.currentUserSource.next(user);
   }

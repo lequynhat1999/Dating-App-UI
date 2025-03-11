@@ -36,13 +36,22 @@ export class LoginComponent implements OnInit {
   formModeEnum = FormMode;
   formMode: FormMode = this.formModeEnum.Login;
   readonly username = new FormControl('', [Validators.required]);
+  readonly email = new FormControl('', [Validators.required]);
   readonly password = new FormControl('', [Validators.required]);
   errorMessageUsername = signal('');
   errorMessagePassword = signal('');
+  errorMessageEmail = signal('');
   objectLogin = {
     username: '',
     password: '',
   };
+
+  objectRegister = {
+    email: '',
+    username: '',
+    password: '',
+  };
+
 
   constructor(
     private accountService: AccountService,
@@ -56,6 +65,9 @@ export class LoginComponent implements OnInit {
     );
     merge(this.username.statusChanges, this.username.valueChanges).subscribe(
       () => this.updateErrorMessagePassword()
+    );
+    merge(this.email.statusChanges, this.email.valueChanges).subscribe(
+      () => this.updateErrorMessageEmail()
     );
   }
 
@@ -72,6 +84,17 @@ export class LoginComponent implements OnInit {
       this.errorMessagePassword.set('You must enter a value');
     } else {
       this.errorMessagePassword.set('');
+    }
+  }
+
+  updateErrorMessageEmail(){
+    if (this.email.hasError('required')) {
+      this.errorMessageEmail.set('You must enter a value');
+    } else if(this.email.hasError('email')) {
+      this.errorMessageEmail.set('You must enter a valid email');
+    }
+     else {
+      this.errorMessageEmail.set('');
     }
   }
 
@@ -106,6 +129,10 @@ export class LoginComponent implements OnInit {
         this.errorMessagePassword.set('Invalid username or password');
       }
     });
+  }
+
+  register() {
+    
   }
 
   ngOnDestroy() {

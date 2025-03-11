@@ -91,36 +91,98 @@
     <div class="login-wrapper">
       <div class="login-content">
         <h1 style="margin-bottom: 16px; font-weight: 700">Register</h1>
-        <div>
+        <div [className]="email.invalid ? 'mb-3' : ''">
           <mat-form-field class="input-login" appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="Placeholder" />
+            <input
+              matInput
+              [formControl]="email"
+              placeholder="Enter your email"
+              required
+              [(ngModel)]="objectRegister.email"
+              (blur)="updateErrorMessageEmail()"
+            />
             <mat-icon matSuffix>email</mat-icon>
+            @if (email.invalid) {
+            <mat-error>{{ errorMessageEmail() }}</mat-error>
+            }
           </mat-form-field>
         </div>
-        <div>
+        <div [className]="username.invalid ? 'mb-3' : ''">
           <mat-form-field class="input-login" appearance="outline">
             <mat-label>Username</mat-label>
-            <input matInput placeholder="Placeholder" />
+            <input
+              matInput
+              [formControl]="username"
+              placeholder="Enter your username"
+              required
+              [(ngModel)]="objectRegister.username"
+              (blur)="updateErrorMessageUserName()"
+            />
             <mat-icon matSuffix>person</mat-icon>
+            @if (username.invalid) {
+            <mat-error>{{ errorMessageUsername() }}</mat-error>
+            }
           </mat-form-field>
         </div>
-        <div>
+        <div [className]="password.invalid ? 'mb-3' : ''">
           <mat-form-field class="input-login" appearance="outline">
             <mat-label>Password</mat-label>
-            <input matInput placeholder="Placeholder" />
-            <mat-icon matSuffix>visibility_off</mat-icon>
+            <input
+              matInput
+              [type]="hide() ? 'password' : 'text'"
+              [formControl]="password"
+              placeholder="Enter your password"
+              required
+              (blur)="updateErrorMessagePassword()"
+              [(ngModel)]="objectRegister.password"
+            />
+            @if (username.invalid) {
+            <mat-error>{{ errorMessagePassword() }}</mat-error>
+            }
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="clickEvent($event)"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide()"
+            >
+              <mat-icon>{{
+                hide() ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </button>
           </mat-form-field>
         </div>
-        <div>
+        <div [className]="password.invalid ? 'mb-3' : ''">
           <mat-form-field class="input-login" appearance="outline">
             <mat-label>Confirm Password</mat-label>
-            <input matInput placeholder="Placeholder" />
-            <mat-icon matSuffix>visibility_off</mat-icon>
+            <input
+              matInput
+              [type]="hide() ? 'password' : 'text'"
+              [formControl]="password"
+              placeholder="Enter your password"
+              required
+              (blur)="updateErrorMessagePassword()"
+              [(ngModel)]="objectRegister.password"
+            />
+            @if (username.invalid) {
+            <mat-error>{{ errorMessagePassword() }}</mat-error>
+            }
+            <button
+              mat-icon-button
+              matSuffix
+              (click)="clickEvent($event)"
+              [attr.aria-label]="'Hide password'"
+              [attr.aria-pressed]="hide()"
+            >
+              <mat-icon>{{
+                hide() ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </button>
           </mat-form-field>
         </div>
         <div class="mt-3 mb-3">
-          <button class="button-login" mat-flat-button>Register</button>
+          <button class="button-login" mat-flat-button (click)="register()" >Register</button>
         </div>
         <div>
           Already have an account ?
