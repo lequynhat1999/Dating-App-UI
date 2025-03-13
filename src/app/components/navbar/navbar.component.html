@@ -7,15 +7,13 @@
   >
     <mat-icon style="color: white">menu</mat-icon>
   </button>
-  <span>{{ title }}</span>
+  <span class="cursor-pointer fs-3" routerLink="/">{{ title }}</span>
   <span class="example-spacer"></span>
 
-  <button mat-button routerLink="/component" class="link">Component</button>
-  <button mat-button routerLink="/directive" class="link">Directive</button>
-  <button mat-button routerLink="/service" class="link">Service</button>
-  <button mat-button routerLink="/pipe" class="link">Pipe</button>
-  <button mat-button routerLink="/rxjs" class="link">RxJS</button>
-  <div class="d-flex align-items-center ml-24">
+  <button mat-button routerLink="/member" routerLinkActive="active" class="link fs-5">Matches</button>
+  <button mat-button routerLink="/list" routerLinkActive="active" class="link fs-5">List</button>
+  <button mat-button routerLink="/message" routerLinkActive="active" class="link fs-5">Message</button>
+  <div class="d-flex align-items-center" style="margin-left: 28px;">
     <ng-container *ngIf="currentUser$ | async as user">
       <div class="text-welcome">Welcome, <strong>{{ user?.UserName }}</strong></div>
     </ng-container>

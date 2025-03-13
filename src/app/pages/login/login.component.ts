@@ -16,6 +16,7 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { merge } from 'rxjs';
 import { AccountService } from '../../services/account.service';
 import { FormMode } from '../../shared/enums/form-mode.enum';
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -56,6 +57,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private accountService: AccountService,
     private router: Router,
+    private toastr: ToastrService,
   ) {}
 
   ngOnInit() {
@@ -122,6 +124,7 @@ export class LoginComponent implements OnInit {
     this.accountService.login(this.objectLogin).subscribe((res: any) => {
       if (res.IsSuccess) {
         this.router.navigate(['/']);
+        this.toastr.success("Login successfully!");
       } else {
         this.username.setErrors({ invalid: true });
         this.errorMessageUsername.set('Invalid username or password');
