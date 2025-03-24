@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { 500PageComponent } from './500-page.component';
+import { UnauthorizedComponent } from './unauthorized.component';
 
-describe('500PageComponent', () => {
-  let component: 500PageComponent;
-  let fixture: ComponentFixture<500PageComponent>;
+describe('UnauthorizedComponent', () => {
+  let component: UnauthorizedComponent;
+  let fixture: ComponentFixture<UnauthorizedComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ 500PageComponent ]
+      declarations: [ UnauthorizedComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(500PageComponent);
+    fixture = TestBed.createComponent(UnauthorizedComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

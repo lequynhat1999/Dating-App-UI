@@ -1,9 +1,8 @@
-import { Injectable } from '@angular/core';
-import { BaseService } from './base.service';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { map, ReplaySubject } from 'rxjs';
-import { ServiceResponse } from '../shared/models/service-response.model';
 import { User } from '../shared/models/user.model';
+import { BaseService } from './base.service';
 
 @Injectable({
   providedIn: 'root',
