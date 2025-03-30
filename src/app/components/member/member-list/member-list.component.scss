@@ -1,0 +1,6 @@
+.member-list-container{
+    height: calc(100% - 64px);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(287px, 1fr)); /* Responsive columns */
+    padding: 24px;
+}

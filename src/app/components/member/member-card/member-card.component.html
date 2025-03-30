@@ -1,0 +1,16 @@
+<mat-card class="member-card" (mouseover)="showOverlay()" (mouseout)="hideOverlay()">
+  <img mat-card-image loading="lazy" src="{{member.PhotoURL}}" alt="{{member.KnownAs}}" class="member-image">
+  <mat-card-content class="member-content">
+    <mat-card-title>
+      <mat-icon *ngIf="member.Gender === 'female'">female</mat-icon>
+      <mat-icon *ngIf="member.Gender === 'male'">male</mat-icon>
+      <div style="padding: 8px 0px 0px 2px;">{{member.KnownAs}}</div>
+    </mat-card-title>
+    <mat-card-subtitle>{{member.City}}</mat-card-subtitle>
+  </mat-card-content>
+  <div class="image-overlay" [class.hidden]="!overlayVisible">
+    <mat-icon class="overlay-icon">person</mat-icon>
+    <mat-icon class="overlay-icon">favorite</mat-icon>
+    <mat-icon class="overlay-icon">message</mat-icon>
+  </div>
+</mat-card>
