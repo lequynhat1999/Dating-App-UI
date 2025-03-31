@@ -99,6 +99,10 @@
   margin-left: 8px; /* Add margin-left to align with gender icon */
 }
 
+.image-overlay-link {
+  text-decoration: none; /* remove underline from link */
+}
+
 .image-overlay mat-icon {
   margin: 0 8px;
   cursor: pointer;

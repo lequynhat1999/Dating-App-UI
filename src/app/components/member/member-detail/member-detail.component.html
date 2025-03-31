@@ -1,3 +1,34 @@
-<p>
-  member-detail works!
-</p>
+<div class="back-button">
+  <a routerLink="/member">
+    <mat-icon>arrow_back</mat-icon>
+  </a>
+</div>
+<div class="member-detail-container">
+  <div class="member-image">
+    <img src="{{ member?.PhotoURL }}" alt="{{ member?.KnownAs }}" (click)="openFullScreen()" class="clickable-image"/>
+    <div class="member-buttons">
+      <button mat-button color="primary">
+        <mat-icon>thumb_up</mat-icon>
+        Like
+      </button>
+      <button mat-button color="accent">
+        <mat-icon>message</mat-icon>
+        Message
+      </button>
+    </div>
+  </div>
+  <div class="member-info">
+    <h2>{{ member?.KnownAs }}</h2>
+    <p><strong>Age:</strong>{{ member?.Age }}</p>
+    <p><strong>Gender:</strong>{{ member?.Gender ?? '' | capitalizeFirstLetter }}</p>
+    <p><strong>City:</strong>{{ member?.City }}, {{ member?.Country }}</p>
+    <p><strong>Introduction:</strong>{{ member?.Introduction }}</p>
+    <p><strong>Looking For:</strong>{{ member?.LookingFor }}</p>
+    <p><strong>Interests:</strong>{{ member?.Interests }}</p>
+  </div>
+</div>
+
+<div class="fullscreen-overlay" *ngIf="isFullScreen" (click)="closeFullScreen()">
+  <mat-icon class="close-icon" (click)="closeFullScreen()">close</mat-icon>
+  <img [src]="member?.PhotoURL" alt="{{ member?.KnownAs }}" class="fullscreen-image">
+</div>

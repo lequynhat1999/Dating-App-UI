@@ -26,4 +26,8 @@ export class MemberService extends BaseService {
   getMemberByUserName(username: string) {
     return this.http.get<ServiceResponse>(`${this.generateURL()}/${username}`);
   }
+
+  getMemberById(id: number){
+    return this.http.get<ServiceResponse>(`${this.generateURL()}/get-by-id/${id}`);
+  }
 }

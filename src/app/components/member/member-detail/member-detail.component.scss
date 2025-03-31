@@ -1,0 +1,124 @@
+.member-detail-container {
+  display: flex;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 30px;
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  position: relative; /* Make container relative for absolute positioning of back button */
+}
+
+.back-button {
+  position: absolute;
+  top: 90px;
+  left: 20px;
+}
+
+.back-button mat-icon {
+  margin-right: 5px; /* Space between icon and text if you add text */
+  color: black;
+}
+
+
+.member-image {
+  flex: 0.4;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column; /* Stack image and buttons vertically */
+  align-items: center; /* Center items horizontally */
+}
+
+.member-image img {
+  width: 300px;
+  height: 300px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  object-fit: cover; /* To maintain aspect ratio and cover the 200x200 area */
+  transition: transform 0.3s ease-in-out; /* Add transition for smooth animation */
+}
+
+.member-image img:hover {
+  transform: scale(1.05); /* Scale up image on hover */
+}
+
+.clickable-image {
+  cursor: pointer; /* Indicate image is clickable */
+}
+
+.fullscreen-overlay {
+  position: fixed; /* Sit on top of everything */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8); /* Black background with opacity */
+  z-index: 1000; /* Ensure it's on top */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fullscreen-image {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain; /* Fit image within the screen */
+}
+
+.close-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 2em;
+}
+
+.member-buttons {
+  margin-top: 20px; /* Add some space between the image and buttons */
+  display: flex;
+  gap: 10px; /* Space between buttons */
+}
+
+.member-buttons button {
+  min-width: 100px; /* Minimum width for buttons */
+  padding: 10px 20px; /* Padding inside buttons */
+  border-radius: 8px; /* Rounded corners for buttons */
+  font-size: 1em; /* Button text size */
+  display: flex;
+  align-items: center; /* Center icon and text vertically */
+  transition: transform 0.2s ease-in-out; /* Add transition for smooth animation */
+}
+
+.member-buttons button:hover {
+  transform: scale(1.05); /* Scale up button on hover */
+}
+
+.member-buttons mat-icon {
+  margin-right: 5px; /* Space between icon and text */
+}
+
+.member-info {
+  flex: 0.6;
+}
+
+.member-info h2 {
+  color: #333;
+  font-size: 2.8em;
+  margin-bottom: 10px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.member-info p {
+  font-size: 1.2em;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.member-info strong {
+  font-weight: 600;
+  color: #333;
+  margin-right: 8px;
+}

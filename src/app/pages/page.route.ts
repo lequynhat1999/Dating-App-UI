@@ -1,11 +1,13 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from '../guard/auth.guard';
+import { MemberDetailComponent } from '../components/member/member-detail/member-detail.component';
+import { MemberEditComponent } from '../components/member/member-edit/member-edit.component';
 
 export const pageRoutes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: '',
-    runGuardsAndResolvers: 'always', // ensure guard and resolver are run on every navigation to this route
+    runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
     children: [
       {
@@ -19,6 +21,16 @@ export const pageRoutes: Routes = [
           import('../components/member/member-list/member-list.component').then(
             (m) => m.MemberListComponent
           ),
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'member-detail/:id',
+        component: MemberDetailComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'member/edit',
+        component: MemberEditComponent,
         canActivate: [AuthGuard],
       },
       {
@@ -37,7 +49,6 @@ export const pageRoutes: Routes = [
       },
     ],
   },
-
   {
     path: 'login',
     loadComponent: () =>
@@ -46,12 +57,10 @@ export const pageRoutes: Routes = [
       isHideNavbar: true,
     },
   },
-
   {
     path: 'not-found',
     loadComponent: () =>
       import('./not-found/not-found.component').then((m) => m.NotFoundComponent),
   },
-
   { path: '**', redirectTo: 'not-found', pathMatch: 'full' },
 ];

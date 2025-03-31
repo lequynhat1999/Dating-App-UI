@@ -9,8 +9,10 @@
     <mat-card-subtitle>{{member.City}}</mat-card-subtitle>
   </mat-card-content>
   <div class="image-overlay" [class.hidden]="!overlayVisible">
-    <mat-icon class="overlay-icon">person</mat-icon>
-    <mat-icon class="overlay-icon">favorite</mat-icon>
-    <mat-icon class="overlay-icon">message</mat-icon>
+    <a class="image-overlay-link" [routerLink]="['/member-detail', member.ID]">
+      <mat-icon class="overlay-icon" matTooltip="View Profile">person</mat-icon>
+    </a>
+    <mat-icon class="overlay-icon" matTooltip="Add to favorites">favorite</mat-icon>
+    <mat-icon class="overlay-icon" matTooltip="Send message">message</mat-icon>
   </div>
 </mat-card>
