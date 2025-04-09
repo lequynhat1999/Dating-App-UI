@@ -3,9 +3,10 @@ import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { User } from './shared/models/user.model';
 import { AccountService } from './services/account.service';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent],
+  imports: [RouterOutlet, NavbarComponent, NgxSpinnerModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })

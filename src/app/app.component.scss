@@ -2,3 +2,14 @@
   overflow-y: auto;
   height: calc(100vh - 64px); /* Assuming navbar height is 64px */
 }
+
+::ng-deep {
+  .ngx-spinner-overlay {
+    height: calc(100% - 64px) !important; /* Set desired height */
+    margin-top: 64px !important; /* Adjust for navbar height */
+  }
+  
+  .square-jelly-box { /* Replace with your spinner type */
+    height: 100% !important; /* Ensure the spinner scales within the overlay */
+  }
+}

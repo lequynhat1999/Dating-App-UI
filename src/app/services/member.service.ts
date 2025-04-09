@@ -1,14 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ServiceResponse } from '../shared/models/service-response.model';
+import { Member } from '../shared/models/member.model';
 import { BaseService } from './base.service';
-
-// const httpOptions = {
-//   headers: new HttpHeaders({
-//     'Content-Type': 'application/json',
-//     'Authorization': `Bearer ${JSON.parse(localStorage.getItem('Login_Account')!).Token}`
-//   }),
-// }
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +23,9 @@ export class MemberService extends BaseService {
 
   getMemberById(id: number){
     return this.http.get<ServiceResponse>(`${this.generateURL()}/get-by-id/${id}`);
+  }
+
+  updateMember(member: Member) {
+    return this.http.put<ServiceResponse>(`${this.generateURL()}/update-profile`, member);
   }
 }

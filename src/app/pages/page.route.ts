@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { CanDeactivateGuard } from '../guards/can-deactivate.guard';
 import { AuthGuard } from '../guard/auth.guard';
 import { MemberDetailComponent } from '../components/member/member-detail/member-detail.component';
 import { MemberEditComponent } from '../components/member/member-edit/member-edit.component';
@@ -32,6 +33,7 @@ export const pageRoutes: Routes = [
         path: 'member/edit',
         component: MemberEditComponent,
         canActivate: [AuthGuard],
+        canDeactivate: [CanDeactivateGuard]
       },
       {
         path: 'list',
